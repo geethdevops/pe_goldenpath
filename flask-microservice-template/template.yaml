@@ -62,8 +62,8 @@ spec:
       name: Publish to GitHub
       action: publish:github
       input:
-        repoUrl: github.com?repo=${{ parameters.repo }}&owner=geethdevops
-        # repoUrl: github.com?owner=geethdevops&repo=${{ parameters.repo }}
+        #repoUrl: github.com?repo=${{ parameters.repo }}&owner=geethdevops
+        repoUrl: github.com?owner=geethdevops&repo=${{ parameters.repo }}
         repoVisibility: ${{ parameters.repoVisibility }}
 
 
@@ -71,7 +71,7 @@ spec:
       name: Register component in Backstage
       action: catalog:register
       input:
-        repoContentsUrl: ${{ steps.publish.output.repoUrl }}
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
 
   output:
     links:
